@@ -1,0 +1,811 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>追梦企业网站管理系统(zmcms)-http://127.0.0.1</title>
+<meta name="keywords" content="追梦企业网站管理系统-最简单的网站管理系统-企业建站的首选！" />
+<meta name="description" content="追梦企业网站管理系统-最简单的网站管理系统" />
+<link href="/template/blue/css/style.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link href="/template/blue/css/system.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script  type="text/javascript" src="/js/myfocus-2.0.4.min.js"></script><!--幻灯调用-->
+<script type="text/javascript" src="/js/jquery.fixed.1.3.js"></script>
+<script language="javascript" type="text/javascript" src="/js/laydate/laydate.js"></script>
+<script src="/js/jquery.lightbox-0.5.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/qp.js"></script>
+<script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="/js/qq.js"></script>
+<script type="text/javascript" src="/js/js.js"></script>
+<script type="text/javascript" src="/js/Functions.js"></script>
+<script type="text/javascript" src="/js/jwplayer5.7.min.js"></script>
+<script type="text/javascript" src="/js/jquery.idTabs.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/shoppingcart.js"></script>
+<script type="text/javascript" src="/js/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="/js/passwordStrength-min.js"></script>
+<script src="/js/js_s.js" type="text/javascript"></script>
+<script src="/js/laypage.js" type="text/javascript"></script>
+<script src="/js/layer.js"></script>
+<script type="text/javascript">
+window.onerror=function(){return true;}
+</script>
+
+<script src="http://siteapp.baidu.com/static/webappservice/uaredirect.js" type="text/javascript"></script>
+
+<link href="/images/qq.css" rel="stylesheet" type="text/css" >
+<script type="text/javascript">
+$(function(){
+$('#gallery a').lightBox();
+});
+</script> 
+<script type="text/javascript">
+$(function(){
+$(".checkform").Validform({
+tiptype:2,
+usePlugin:{
+passwordstrength:{
+minLen:6,
+maxLen:18
+}
+}
+});
+})
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+if (window.location.hash!="")
+{$(".fade").idTabs(window.location.hash);}
+else
+{$(".fade").idTabs();}
+});
+function RefreshImage(valImageId) {
+var objImage = document.images[valImageId];
+if (objImage == undefined) {
+return;
+}
+var now = new Date();
+objImage.src = objImage.src.split('?')[0] + '?x=' + now.toUTCString();
+}
+</script> 
+<script>
+//加载公共
+$(document).ready(function(){ 
+setaccount();
+}); 
+//加载公共
+$(document).ready(function(){ 
+showcount();
+}); 
+//用户状态
+function setaccount()
+{
+$.ajax({
+type:"get",
+url:"/template/blue/ajax/gmember.asp",
+data:"r="+Math.round(Math.random()*10000),
+beforesend:function(){$("#fldaccount").html("载入中...");},
+error:function(){$("#fldaccount").html("获取信息失败");},
+success:function(data){$("#fldaccount").html(data);}
+});
+}
+</script>
+<script>
+//---建立xmlhttp对象
+var xmlhttp;
+try{
+xmlhttp= new ActiveXObject('Msxml2.XMLHTTP');// IE 
+}catch(e){
+try{
+xmlhttp= new ActiveXObject('Microsoft.XMLHTTP');// IE 
+}catch(e){
+try{
+xmlhttp= new XMLHttpRequest();//Mozilla FF
+}catch(e){alert("纳尼?浏览器不支持AJAX!")}
+}
+}
+</script>
+<script language="javascript" type="text/javascript">
+function showDiv_addcart(){				
+layer.open({
+    type: 2,
+    title: '追梦工作室提示您',
+    area: ['auto','150px'],
+    shade: 0.8,
+    closeBtn:1,
+    shadeClose: true,
+    content: '/template/blue/ajax/cart_result.asp',
+	skin: 'layui-layer-lan',
+	btn: ['去结算', '继续购物'],
+	yes: function(index, layero){
+       location.href="/template/blue/member/productbuy.asp?step=1&m=3&Language=ch";
+    }
+});
+}
+</script>
+<script> 
+function showcount() 
+//购物车及时统计
+{
+url="/template/blue/ajax/count.asp";
+url+=((url.indexOf("?")==-1)?"?":"&")+"rnd="+Math.random();
+xmlHttp=GetXmlHttpObject(stateChanged1) 
+xmlHttp.open("GET", url , true) 
+xmlHttp.send(null) 
+}
+function stateChanged1() 
+{ 
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete") 
+{ 
+document.getElementById("txtHint").innerHTML=xmlHttp.responseText 
+} 
+}
+function GetXmlHttpObject(handler) 
+{ 
+var objXmlHttp=null
+if (navigator.userAgent.indexOf("Opera")>=0) 
+{ 
+alert("This example doesn't work in Opera") 
+return; 
+} 
+if (navigator.userAgent.indexOf("MSIE")>=0) 
+{ 
+var strName="Msxml2.XMLHTTP"
+if (navigator.appVersion.indexOf("MSIE 5.5")>=0) 
+{ 
+strName="Microsoft.XMLHTTP" 
+} 
+try 
+{ 
+objXmlHttp=new ActiveXObject(strName) 
+objXmlHttp.onreadystatechange=handler 
+return objXmlHttp 
+} 
+catch(e) 
+{ 
+alert("Error. Scripting for ActiveX might be disabled") 
+return 
+} 
+} 
+if (navigator.userAgent.indexOf("Mozilla")>=0) 
+{ 
+objXmlHttp=new XMLHttpRequest() 
+objXmlHttp.onload=handler 
+objXmlHttp.onerror=handler 
+return objXmlHttp 
+} 
+} 
+</script> 
+<script>
+//添加到购物车
+function add_2_my_cart(){	
+list_hid=document.getElementsByName("hidv_0001_");
+var hasNull = false;
+for(var j=0;j<list_hid.length;j++){
+if(!list_hid[j].value) 
+{
+hasNull = true; 
+}
+}
+if(hasNull==true) 
+{
+layer.msg('请选择您要购买的商品规格！', {icon: 5}); 
+return false; 
+}
+var id=document.getElementById('id').value;
+var quantity=document.getElementById('quantity').value;//数量
+if(quantity.length>0){//不为空时
+strURL="/template/blue/member/productbuy.asp?quantity="+ quantity + "&id="+ id;
+strURL+=((strURL.indexOf("?")==-1)?"?":"&")+"rnd="+Math.random();
+xmlhttp.open("GET", strURL, true);
+xmlhttp.onreadystatechange = function(){
+if(xmlhttp.readyState == 4){
+
+if(xmlhttp.status == 200){
+if(xmlhttp.responseText!=""){
+var data=escape(xmlhttp.responseText);
+add_2_my_cart_result(data);
+showcount();
+}
+}
+else{
+}
+}
+else{
+}
+}
+xmlhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+xmlhttp.send(null);//使用GET后这里就用Null
+}
+else{
+document.getElementById('show_add_to_cart2').innerHTML="<img src=../image/gantanhao.gif  style=margin-top:3px; margin-right:2px;/>请不要重复操作。";
+}
+}
+function add_2_my_cart_result(data){
+var resultbox=document.getElementById('addcart_result');
+if(data==1){
+showDiv_addcart()
+}
+else{
+if(data==3){
+show_err3()
+}
+else if(data==2){
+showDiv_addcart()
+}
+else {
+showDiv_addcart()
+}
+}
+}
+</script>
+<script> 
+// 加载购物车按钮状态
+function showcart() 
+{
+var id=document.getElementById('id').value;
+url="/template/blue/ajax/showcart.asp?id="+ id;
+url+=((url.indexOf("?")==-1)?"?":"&")+"rnd="+Math.random();
+xmlHttp=GetXmlHttpObject(stateChanged) 
+xmlHttp.open("GET", url , true) 
+xmlHttp.send(null) 
+}
+function stateChanged() 
+{ 
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete") 
+{ 
+
+document.getElementById("carttip").innerHTML=xmlHttp.responseText 
+
+} 
+
+}
+function GetXmlHttpObject(handler) 
+{ 
+var objXmlHttp=null
+if (navigator.userAgent.indexOf("Opera")>=0) 
+{ 
+alert("This example doesn't work in Opera") 
+return; 
+} 
+if (navigator.userAgent.indexOf("MSIE")>=0) 
+{ 
+var strName="Msxml2.XMLHTTP"
+if (navigator.appVersion.indexOf("MSIE 5.5")>=0) 
+{ 
+strName="Microsoft.XMLHTTP" 
+} 
+try 
+{ 
+objXmlHttp=new ActiveXObject(strName) 
+objXmlHttp.onreadystatechange=handler 
+return objXmlHttp 
+} 
+catch(e) 
+{ 
+alert("Error. Scripting for ActiveX might be disabled") 
+return 
+} 
+} 
+if (navigator.userAgent.indexOf("Mozilla")>=0) 
+{ 
+objXmlHttp=new XMLHttpRequest() 
+objXmlHttp.onload=handler 
+objXmlHttp.onerror=handler 
+return objXmlHttp 
+} 
+} 
+</script> 
+
+<script type="text/javascript">uaredirect("/wap/?language=ch");</script>
+
+<script type="text/javascript">
+$(function() {
+	setTimeout("changeDivStyle();", 100); // 0.1秒后展示结果，因为HTML加载顺序，先加载脚本+样式，再加载body内容。所以加个延时
+});
+function changeDivStyle(){
+var o_status = $("#o_status").val();	//获取隐藏框值
+if(o_status==0){
+$('#create').css('background', '#DD0000');
+$('#createText').css('color', '#DD0000');
+}else if(o_status==1){
+$('#check').css('background', '#DD0000');
+$('#checkText').css('color', '#DD0000');
+}else if(o_status==2){
+$('#produce').css('background', '#DD0000');
+$('#produceText').css('color', '#DD0000');
+}else if(o_status==3){
+$('#delivery').css('background', '#DD0000');
+$('#deliveryText').css('color', '#DD0000');
+}else if(o_status>=4){
+$('#received').css('background', '#DD0000');
+$('#receivedText').css('color', '#DD0000');
+}
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body >
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+$("#scrollsidebar").fix({
+float : 'left',
+minStatue : false,
+skin : 'green',
+durationTime : 600
+});
+});
+</script>
+<div class="scrollsidebar" id="scrollsidebar" style="top:10px">
+<div class="side_content" style=" float:left">
+<div class="side_list">
+<div class="side_title"><a title="隐藏" class="close_btn"><span>关闭</span></a></div>
+<div class="side_center"> 
+<div class="qqserver">
+<p>
+售前：<a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=405709699&amp;site=qq&amp;menu=yes" target="_blank">
+<img src="http://wpa.qq.com/pa?p=2:405709699:42"> 
+</a>
+</p>
+<p>
+售前：<a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=405709699&amp;site=qq&amp;menu=yes" target="_blank">
+<img src="http://wpa.qq.com/pa?p=2:405709699:42"> 
+</a>
+</p>
+<p>
+购买：<a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=405709699&amp;site=qq&amp;menu=yes" target="_blank">
+<img src="http://wpa.qq.com/pa?p=2:405709699:42"> 
+</a>
+</p>
+<p>
+售前： <a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=13453729058@163.com&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/realonline.aw?v=2&uid=13453729058@163.com&site=cntaobao&s=1&charset=utf-8" alt="点击这里给我发消息" /></a>
+</p>
+<p>
+售后： <a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=13453729058@163.com&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/realonline.aw?v=2&uid=13453729058@163.com&site=cntaobao&s=1&charset=utf-8" alt="点击这里给我发消息" /></a>
+</p>
+</div>
+</div>
+<div class="side_bottom"></div>
+</div>
+</div>
+<div class="show_btn" style=" float:left"><span>在线客服</span></div>
+</div>
+
+
+
+<div class="top">
+<div class="top1">
+<div class="logo"><a href="http://127.0.0.1" title="追梦企业网站管理系统(zmcms)" ><img  src="/UpLoadFile/image/maxpic/20150403133140454045.png" width="300" height="69" alt="追梦企业网站管理系统(zmcms)" title="追梦企业网站管理系统(zmcms)" /></a></div>
+<div class="zj"></div>
+<div class="so">
+<script language="javascript">
+function Checkss()
+{
+if (document.form1.key.value==""){
+alert ('关键词不能为空');
+document.form1.key.focus();
+return false;
+}
+if (document.form1.tt.value==""){ 
+alert('请选择分类'); 
+document.form1.tt.focus(); 
+return false;
+} 
+}
+$(document).ready(function(){
+$(".select").hover(function(){
+$("#search_all_category").show();
+},function(){
+$("#search_all_category").hide();
+})
+$(".txt").focus(function(){
+var txt_value=$(this).val()
+$(this).css({color:"#333333"})
+if(txt_value==this.defaultValue){
+$(this).val("");
+}
+})
+$(".txt").blur(function(){
+var txt_value=$(this).val()
+if(txt_value==""){
+$(this).css({color:"#999999"})
+$(this).val(this.defaultValue);
+}
+})
+$(".select a").click(function(){
+$txt=$(this).text();
+$("#Show_Category_Name").text($txt);
+$("#search_all_category").hide();
+$("#vlu").val($txt);
+})
+});
+</script>
+<div id="searchbk">
+<div id="seach">
+<form action="/search/" method="get" onSubmit="return Checkss()" name="form1">
+<input name="language" type="hidden" class="txt" value="ch"/>
+<input name="key" type="text" class="txt" value="请输入关键词"/>
+<span class="select"><span id="Show_Category_Name">分类</span>
+<div id="search_all_category" style="display:none;">
+<a href="javascript:void(0);"><span>新闻</span></a>
+<a href="javascript:void(0);"><span>产品</span></a>
+<a href="javascript:void(0);"><span>图片</span></a>
+<a href="javascript:void(0);"><span>视频</span></a>
+<a href="javascript:void(0);"><span>下载</span></a>
+</div>
+</span>
+<input name="" type="submit" class="sub" value="搜 索"/>
+<input id="vlu" type="hidden" name="tt" value="">
+</form>
+</div>
+</div>
+ 
+</div>
+</div>
+</div>
+<div class="topmenu">
+<div class="navBar">
+
+<ul class="nav " id="clickmenubotton">
+
+<li class="m">
+<span>
+<a href="/" target="_self" 
+
+
+>网站首页</a></span>
+
+
+
+
+
+
+
+
+
+</li>	
+
+
+
+<li class="m">
+<span>
+<a href="/html/about_1_3_1.html" target="_self" 
+
+
+>关于我们</a></span>
+
+
+
+
+
+
+
+
+
+</li>	
+
+
+
+<li class="m">
+<span>
+<a href="/info/list.html" target="_self" 
+
+
+>新闻中心</a></span>
+
+
+
+
+
+
+
+
+
+</li>	
+
+
+
+<li class="m">
+<span>
+<a href="/product/productlist.html" target="_self" 
+
+
+>产品中心</a></span>
+
+
+
+
+
+
+
+
+
+</li>	
+
+
+
+<li class="m">
+<span>
+<a href="/photo/photolist.html" target="_self" 
+
+
+>图片中心</a></span>
+
+
+
+
+
+
+
+
+
+</li>	
+
+
+
+<li class="m">
+<span>
+<a href="/video/videolist.html" target="_self" 
+class="hightcurr"
+
+>视频中心</a></span>
+
+
+
+
+
+
+
+
+
+</li>	
+
+
+
+<li class="m">
+<span>
+<a href="/down/downlist.html" target="_self" 
+
+
+>下载中心</a></span>
+
+
+
+
+
+
+
+
+
+</li>	
+
+
+
+<li class="m">
+<span>
+<a href="/job/joblist.html" target="_self" 
+
+
+>招聘中心</a></span>
+
+
+
+
+
+
+
+
+
+</li>	
+
+
+
+<li class="m">
+<span>
+<a href="/member/membercenter/?=8&language=ch" target="_self" 
+
+
+>会员中心</a></span>
+
+
+
+
+
+
+
+
+
+</li>	
+
+
+
+<li class="m">
+<span>
+<a href="/guest/?m=9&language=ch" target="_self" 
+
+
+>留言中心</a></span>
+
+
+
+
+
+
+
+
+
+</li>	
+
+
+
+
+</ul>
+</div>
+
+<script type="text/javascript">
+	$(window).load(function() {
+		$("#clickmenubotton li span").hover(function() {
+			$(this).addClass("menuhover");
+			$(this).parent().find("ul.subnav").slideDown('fast').show();
+			$(this).parent().hover(function() {
+			}, function() {
+				$(this).parent().find("ul.subnav").fadeOut('fast');
+				$(this).parent().find("span").removeClass("menuhover");
+			});
+		});
+	});
+</script>
+
+
+</div>
+<div class="topfoucs">
+<div class="focusBox3" style="margin:0 auto;width:100%;height:450px"><ul class="pic"><li><a href="#" target="_blank"><img src="/UpLoadFile/image/maxpic/20150403132729702970.jpg" style="width:100%;height:450px"/></a></li><li><a href="#" target="_blank"><img src="/UpLoadFile/image/maxpic/20150403132756285628.jpg" style="width:100%;height:450px"/></a></li></ul><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a><ul class="hd"><li></li><li></li></ul></div><script type="text/javascript">jQuery(".focusBox3").hover(function(){ jQuery(this).find(".prev,.next").stop(true,true).fadeTo("show",0.2) },function(){ jQuery(this).find(".prev,.next").fadeOut() });jQuery(".focusBox3").slide({ mainCell:".pic",effect:"fold", autoPlay:true, delayTime:600, trigger:"click"});</script></div>
+
+</div>
+
+<div class="wrap">
+<div class="main">
+ <!--左侧-->
+<div class="fyLeft">
+<dl class="l_pro">
+<dt>下载导航</dt>
+
+
+<dd><a href="/xzfl1/downlist_1_1.html" title="下载分类一"
+
+
+
+>下载分类一</a></dd>
+
+<dd><a href="/xzfl2/downlist_2_1.html" title="下载分类二"
+
+
+
+>下载分类二</a></dd>
+
+<dd><a href="/zxfl3/downlist_3_1.html" title="下载分类三"
+
+
+
+>下载分类三</a></dd>
+
+<dd><a href="/xzfl4/downlist_4_1.html" title="下载分类四"
+
+
+
+>下载分类四</a></dd>
+
+<dd><a href="/xzfl5/downlist_5_1.html" title="下载分类五"
+
+
+
+>下载分类五</a></dd>
+
+</dl>
+<dl class="l_pro">
+<dt>日期归档</dt>
+
+
+
+<dd>
+<a href="/down/?m=5&logdate=2014-12&Language=ch"  
+
+
+
+>2014年12月（1）</a></dd>
+
+
+</dl>
+<dl class="l_content">
+<dt>地址：临汾市鼓楼西街</dt>
+</dl>
+<dl class="l_content">
+<dt>电话：134537290588</dt>
+</dl>
+<dl class="l_content">
+<dt>传真：0359-6583131</dt>
+</dl>
+<dl class="l_content">
+<dt>负责：追梦工作室</dt>
+</dl>
+
+</div>
+   
+<!--右侧-->
+<div class="fyRight">
+<div class="title"> <span class="fl">下载中心</span>
+<div class="fr">您当前的位置：<a href="/">首页</a> >> 所有信息</div>
+</div>
+
+
+<div class="mainRightMain">
+
+
+<div class="showlb1">
+<p>文件名称:测试看看如何</p>
+
+<span class="data">更新日期：2014/12/25</span>
+<span class="sj">
+
+文件大小：10M  
+文件类型：软件  
+适用系统：所有系统  
+<a  href=" /html/down_1_4_1.html">查看详情</a>
+</span>
+</div>
+
+<div id="pagepc" class="page"></div><script type="text/javascript">
+laypage({
+cont: 'pagepc',
+pages: 1,
+skin: '#1970b8',
+first: 1,
+prev: '上一页',
+next: '下一页',
+groups: 5,
+skip: false,
+curr: 1,
+jump: function(e, first){
+if(!first){
+location.href ='downlist_'+e.curr+'.html'
+}
+ }
+});
+</script>
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="foot">
+  <div class="main"> 
+    <div class="foot_r"> Copyright 2015 All Rights Reserved  地址：临汾市鼓楼西街  技术支持：<a href="http://www.zmxt.cn/"  target="_blank">追梦工作室</a>     </div>
+  </div>
+</div>
+
+
+</body>
+</html>

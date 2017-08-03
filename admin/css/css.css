@@ -1,0 +1,32 @@
+@charset "utf-8";
+* {margin:0px;padding:0px;list-style-type:none;}
+img {border:0px;}
+a {color:#4c97a3;text-decoration:none;}
+a:hover {color:#999;}
+
+html, body {background:url(../images/index_11.jpg) repeat-x;height:100%; font-size:12px;}
+
+.dh{width:100px;margin:0 auto;}
+.dh li{border-bottom:1px solid #00548C; border-top:1px #0071BB solid;line-height:40px; text-align:center}
+.dh li a{color:#ffffff}
+.dh li a:hover{color:#ff0000}
+/*top css*/
+.hd-main{padding:0 5px;height:49px;min-width:800px;background:#005d98;border-bottom:0}
+.hd-main .logo{background-image:url('../images/logo.png');background-repeat:no-repeat;display:block;height:36px;width:175px;float:left;margin-left:0px;background-position:0 0;margin-top:5px;display:inline;}
+.hd-main .navs{padding:0 0 3px 0px;height:45px;float:left}
+.hd-main .navs a,.hd-main .info a,.hd-main .navs a:visited,.hd-main .info a:visited,.hd-main .navs a:active,.hd-main .info a:active{color:#d8d8d8}
+.hd-main .navs a:hover,.hd-main .navs a:active{text-decoration:none;background-color:#000000}
+.hd-main .navs .def-nav,.hd-main .navs .pulldown-nav,.hd-main .navs .separate{display:block;float:left;height:48px;font:18px/30px "Microsoft YaHei","Microsoft JhengHei";color:#d8d8d8;text-align:center;width:75px;line-height:48px}
+.hd-main .navs .def-nav .pulldown-canvas-url{width:575px;height:109px}
+.hd-main .navs .separate{margin:0;height:48px;width:1px;background:#00548C}
+.hd-main .navs .pulldown-nav{position:relative}
+.hd-main .navs .pulldown-nav em{position:absolute;display:block;left:69px;top:18px;height:12px;width:12px;font-size:0;background-position:-89px -45px}
+.hd-main .info,.hd-main .info ul{height:36px;float:right;text-align:right;margin-top:3px;white-space:nowrap}
+.hd-main .info a{color:#d8d8d8}
+.hd-main .info a:hover{color:#FFF;text-decoration:underline}
+.hd-main .info .info-i{padding:0 10px;margin:10px 0;display:inline-block;*display:inline;*zoom:1;height:16px;border-right:#393939 1px solid;color:#d8d8d8;font:12px/16px "SimSun"}
+.hd-main .info .notice-nu .f-icon{display:inline-block;padding-right:4px;background-position:right -109px;color:#FFF}
+.hd-main .info .user-info .arrow{left:70px;*left:-32px}
+.hd-main .info .user-info .content,.hd-main .info .more-info .content{padding:10px 0;height:180px}
+.hd-main .info .more{padding:0;display:inline;line-height:inherit;background:none}
+.hd-main .info .more-info .content{height:280px}

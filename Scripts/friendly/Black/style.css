@@ -1,0 +1,116 @@
+#SfMessWrap{
+	width:211px;
+	margin:0 5px;
+	text-align:center;
+	position:absolute;
+z-index:999999;
+}
+
+#SfMessHead{
+	margin:0 auto 10px auto;
+	width:108px;
+	height:152px;
+	background-image:url(head.gif);
+	color:#fff;
+	cursor:pointer;
+}
+
+#SfMessHeadIcon{
+	position:absolute;
+	top:101px;left:107px;
+	width:14px;
+	height:20px;
+}
+.SfMessIconOpen{
+}
+.SfMessIconClose{
+}
+
+#SfMessHead #SfMessTitle{
+	line-height:18px;
+	font-size:12px;
+	font-weight:bold;
+	margin:0 4px;
+	padding-top:6px;
+	color:#e2e0e0;
+}
+
+#SfMessBody{
+	background:url(bodytop.gif) no-repeat;
+}
+#SfMessBodyTop{
+	height:11px;
+	font-size:1px;
+	line-height:1px;
+}
+#SfMessBodyMid{
+	border-left:2px solid #7f7f7f;
+	border-right:2px solid #7f7f7f;
+	padding-left:11px;
+	text-align:left;
+	background:#fff;
+	zoom:1;
+}
+
+#SfMessBodyMid input {
+	border:1px solid #8c8c8c;
+	color:#9b9b9b;
+	width:183px;
+	font-size:12px;
+}
+
+#SfMessBodyMid textarea {
+	width:183px;
+	border:1px solid #8c8c8c;
+	color:#9b9b9b;
+	height:88px;
+	overflow:hidden;
+	margin-bottom:5px;
+	font-size:12px;
+}
+
+#SfMessBodyMid .message {
+	height:auto;
+}
+
+#SfMessBodyBottom{
+	margin:0;
+	height:23px;
+	border-left:2px solid #797979;
+	border-right:2px solid #797979;
+	padding:15px 11px 15px 11px;
+	background:#fff;
+}
+
+#SfMessSubmit{
+	background:url(send.gif) no-repeat;
+	color:#000;
+	width:60px;
+	height:25px;
+	border:0;
+	float:left;
+}
+
+#SfMessCopy{
+	float:right;
+	margin:8px 0;
+	line-height:14px;
+	font-size:12px;
+	color:#666;
+	background:url(sign.gif) no-repeat;
+	text-indent:5px;
+	width:110px;
+}
+
+.SfMessTip{
+	padding-top:5px;
+	font-size:12px;
+	color:#262626;
+}
+
+#SfMessBodyFoot{
+	line-height:2px;
+	font-size:2px;
+	height:2px;
+	background:#7f7f7f;
+}
